@@ -15,8 +15,6 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Ambiente local
-.env*
-!.env.example
 .DS_Store
 
 # Cache e artefatos
