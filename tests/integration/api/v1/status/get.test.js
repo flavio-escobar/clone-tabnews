@@ -7,9 +7,9 @@ test("GET to api/v1/status should return 200 and the correct status information"
 
   const parsedUpdatedAt = new Date(responseBody.update_at).toISOString();
   expect(responseBody.update_at).toEqual(parsedUpdatedAt);
-  expect(Number.isFinite(responseBody.postgresVersion)).toBe(true);
-  expect(Number.isInteger(responseBody.postgresMaxConnections)).toBe(true);
-  expect(Number.isInteger(responseBody.postgresUsedConnections)).toBe(true);
+  expect(responseBody.dependencies.database.version).toEqual("16.0");
+  expect(responseBody.dependencies.database.max_connections).toEqual(100);
+  expect(responseBody.dependencies.database.opened_connections).toEqual(1);
 
   console.log(responseBody);
 });
