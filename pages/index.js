@@ -1,5 +1,5 @@
 function Home() {
-  return <h1>Clone TabNews - Testando o lint</h1>;
+  return <h1>Futuro site da Luli. Prometo que agora ele sai.</h1>;
 }
 
 function test() {
