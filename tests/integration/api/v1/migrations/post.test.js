@@ -1,6 +1,6 @@
 test("POST to api/v1/migration should return 200 and the correct status information", async () => {
-  const response = await fetch("http://localhost:3000/api/v1/migrations",{
-    method: 'POST'
+  const response = await fetch("http://localhost:3000/api/v1/migrations", {
+    method: "POST",
   });
   expect(response.status).toBe(200);
 
