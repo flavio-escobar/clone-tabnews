@@ -25,4 +25,12 @@ test("POST to api/v1/migration should return 201 and the correct status informat
   expect(response2.status).toBe(200);
   console.log(response2.status);
   console.log(responseBody2);
+
+  const response3 = await fetch("http://localhost:3000/api/v1/migrations", {
+    method: "DELETE",
+  });
+  const responseBody3 = await response3.json();
+  expect(response3.status).toBe(405);
+  console.log(response3.status);
+  console.log(responseBody3);
 });
