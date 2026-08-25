@@ -1,9 +1,10 @@
 import database from "infra/database";
+import orchestrator from "tests/orchestrator";
 
-beforeAll(cleanDatabase);
-async function cleanDatabase() {
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
   await database.query("DROP schema public cascade; CREATE schema public;");
-}
+});
 
 test("POST to api/v1/migration should return 201 and the correct status information", async () => {
   const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
@@ -13,8 +14,6 @@ test("POST to api/v1/migration should return 201 and the correct status informat
   expect(Array.isArray(responseBody1)).toBe(true);
   expect(responseBody1.length).toBeGreaterThan(0);
   expect(response1.status).toBe(201);
-  console.log(response1.status);
-  console.log(responseBody1);
 
   const response2 = await fetch("http://localhost:3000/api/v1/migrations", {
     method: "POST",
@@ -23,14 +22,10 @@ test("POST to api/v1/migration should return 201 and the correct status informat
   expect(Array.isArray(responseBody2)).toBe(true);
   expect(responseBody2.length).toBe(0);
   expect(response2.status).toBe(200);
-  console.log(response2.status);
-  console.log(responseBody2);
 
   const response3 = await fetch("http://localhost:3000/api/v1/migrations", {
     method: "DELETE",
   });
   const responseBody3 = await response3.json();
   expect(response3.status).toBe(405);
-  console.log(response3.status);
-  console.log(responseBody3);
 });
