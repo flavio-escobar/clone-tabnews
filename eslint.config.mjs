@@ -8,6 +8,6 @@ const dirname = path.dirname(filename);
 const compat = new FlatCompat({ baseDirectory: dirname });
 
 export default defineConfig([
-  ...compat.extends("next/core-web-vitals"),
+  ...compat.extends("next/core-web-vitals", "prettier"),
   globalIgnores([".next/**", "node_modules/**", "coverage/**"]),
 ]);
