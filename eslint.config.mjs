@@ -9,5 +9,12 @@ const compat = new FlatCompat({ baseDirectory: dirname });
 
 export default defineConfig([
   ...compat.extends("next/core-web-vitals", "prettier"),
+
+  {
+    rules: {
+      "no-unused-vars": "error",
+    },
+  },
+
   globalIgnores([".next/**", "node_modules/**", "coverage/**"]),
 ]);
