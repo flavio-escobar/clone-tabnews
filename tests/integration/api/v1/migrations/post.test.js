@@ -26,5 +26,9 @@ test("POST to api/v1/migration should return 201 and the correct status informat
   const response3 = await fetch("http://localhost:3000/api/v1/migrations", {
     method: "DELETE",
   });
+<<<<<<< HEAD
+=======
+  //const responseBody3 = await response3.json();
+>>>>>>> 18e4d78 (adding quality linting with `Eslint`)
   expect(response3.status).toBe(405);
 });
