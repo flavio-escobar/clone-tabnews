@@ -1,14 +1,12 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import { FlatCompat } from "@eslint/eslintrc";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import nextConfig from "eslint-config-next";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 
-const filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(filename);
-const compat = new FlatCompat({ baseDirectory: dirname });
+export default [
+  ...nextConfig,
 
-export default defineConfig([
-  ...compat.extends("next/core-web-vitals", "prettier"),
+  {
+    ignores: [".next/**", "node_modules/**", "coverage/**"],
+  },
 
   {
     rules: {
@@ -16,5 +14,5 @@ export default defineConfig([
     },
   },
 
-  globalIgnores([".next/**", "node_modules/**", "coverage/**"]),
-]);
+  eslintConfigPrettier,
+];
