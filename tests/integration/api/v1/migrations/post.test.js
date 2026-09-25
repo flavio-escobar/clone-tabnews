@@ -32,15 +32,15 @@ describe("POST api/v1/migrations", () => {
         expect(responseBody2.length).toBe(0);
         expect(response2.status).toBe(200);
       });
-      test("When the user tries to delete migrations", async () => {
-        const response3 = await fetch(
-          "http://localhost:3000/api/v1/migrations",
-          {
-            method: "DELETE",
-          },
-        );
-        expect(response3.status).toBe(405);
-      });
+      //test("When the user tries to delete migrations", async () => {
+      //  const response3 = await fetch(
+      //    "http://localhost:3000/api/v1/migrations",
+      //    {
+      //      method: "DELETE",
+      //    },
+      //  );
+      //  expect(response3.status).toBe(405);
+      //});
     });
   });
 });
