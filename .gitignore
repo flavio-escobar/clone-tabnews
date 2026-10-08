@@ -16,6 +16,7 @@ pnpm-debug.log*
 
 # Ambiente local
 .DS_Store
+.env*
 
 # Cache e artefatos
 .cache/
