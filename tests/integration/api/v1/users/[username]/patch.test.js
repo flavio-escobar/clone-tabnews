@@ -86,8 +86,8 @@ describe("PATCH api/v1/users/[username]", () => {
       const responseBody = await response.json();
       expect(responseBody).toEqual({
         name: "ValidationError",
-        message: "Email already exists",
-        action: "Please use a different email address",
+        message: "Email já cadastrado",
+        action: "Por favor, utilize um email diferente",
         statusCode: 400,
       });
     });
