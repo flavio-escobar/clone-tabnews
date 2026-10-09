@@ -86,8 +86,8 @@ describe("POST api/v1/users", () => {
       const response2Body = await response2.json();
       expect(response2Body).toEqual({
         name: "ValidationError",
-        message: "Email already exists",
-        action: "Please use a different email address",
+        message: "Email já cadastrado",
+        action: "Por favor, utilize um email diferente",
         statusCode: 400,
       });
     });
