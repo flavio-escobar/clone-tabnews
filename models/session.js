@@ -53,11 +53,25 @@ async function create(userId) {
   return newSession;
 }
 
+async function expiredById(sessionId) {
+  const expiredSessionObject = await runUpdateQuery(sessionId);
+  return expiredSessionObject;
+
+  async function runUpdateQuery(sessionId) {
+    const result = await database.query({
+      text: `UPDATE sessions SET expires_at = expires_at - interval '1 year', updated_at = NOW() WHERE id = $1 RETURNING *;`,
+      values: [sessionId],
+    });
+    return result.rows[0];
+  }
+}
+
 const session = {
-  create: create,
+  create,
   EXPIRATION_IN_MILLISECONDS,
-  findOneValidByToken: findOneValidByToken,
-  renew: renew,
+  findOneValidByToken,
+  renew,
+  expiredById,
 };
 
 export default session;
